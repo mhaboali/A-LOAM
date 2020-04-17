@@ -2,10 +2,10 @@
     
 
     <node name="kittiHelper" pkg="aloam_velodyne" type="kittiHelper" output="screen"> 
-        <param name="dataset_folder" type="string" value="/data/KITTI/odometry/" />
-        <param name="sequence_number" type="string" value="00" />
+        <param name="dataset_folder" type="string" value="/media/phoenix/d2c96e98-3834-45b5-93dc-d99a3d923130/kitti/dataset" />
+        <param name="sequence_number" type="string" value="08" />
         <param name="to_bag" type="bool" value="false" />
-        <param name="output_bag_file" type="string" value="/tmp/kitti.bag" /> <!-- replace with your output folder -->
+        <param name="output_bag_file" type="string" value="/home/phoenix/catkin_ws/kitti_bags/kitti_seq_08.bag" /> <!-- replace with your output folder -->
         <param name="publish_delay" type="int" value="1" />
     </node>
 </launch>
