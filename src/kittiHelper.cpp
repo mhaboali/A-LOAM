@@ -83,9 +83,9 @@ int main(int argc, char** argv)
     std::size_t line_num = 0;
 
     ros::Rate r(10.0 / publish_delay);
-    /* std::cout <<"#########################\n"<< dataset_folder;
-    std::cout <<"#########################\n"<< ground_truth_path;
-    std::cout <<"#########################\n"<< timestamp_path; */
+    /* std::cout <<"\n#########################\n"<< dataset_folder;
+    std::cout <<"\n#########################\n"<< ground_truth_path;
+    std::cout <<"\n#########################\n"<< timestamp_path; */
     while (std::getline(timestamp_file, line) && ros::ok())
     {
         float timestamp = stof(line);
@@ -134,7 +134,7 @@ int main(int argc, char** argv)
         std::stringstream lidar_data_path;
         lidar_data_path << dataset_folder << "/sequences/" + sequence_number + "/velodyne/" 
                         << std::setfill('0') << std::setw(6) << line_num << ".bin";
-        // std::cout<<"############################\n" << left_image_path.str()<<"\n*****************\n";
+        // std::cout<<"############################\n" << lidar_data_path.str()<<"\n*****************\n";
         std::vector<float> lidar_data = read_lidar_data(lidar_data_path.str());
         std::cout << "totally " << lidar_data.size() / 4.0 << " points in this lidar frame \n";
 
