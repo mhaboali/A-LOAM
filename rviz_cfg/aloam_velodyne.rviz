@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /GT1/gtPathlc1
-        - /TF1
         - /TF1/Frames1
         - /Odometry1/Shape1
       Splitter Ratio: 0.5
@@ -269,7 +268,7 @@ Visualization Manager:
           Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
-          Max Intensity: 15.124229431152344
+          Max Intensity: 15.114662170410156
           Min Color: 0; 0; 0
           Min Intensity: 0
           Name: currPoints
@@ -743,26 +742,26 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Class: rviz/XYOrbit
-      Distance: 28.128217697143555
+      Class: rviz/Orbit
+      Distance: 159.0803985595703
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -14.700016975402832
-        Y: -5.8812665939331055
-        Z: -8.838082067086361e-6
+        X: 4.954197883605957
+        Y: 8.241947174072266
+        Z: 1.5747865438461304
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8303977847099304
+      Pitch: 1.2603970766067505
       Target Frame: aft_mapped
-      Value: XYOrbit (rviz)
-      Yaw: 3.865401029586792
+      Value: Orbit (rviz)
+      Yaw: 0.5272148847579956
     Saved: ~
 Window Geometry:
   Displays:
