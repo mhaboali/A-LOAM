@@ -203,14 +203,14 @@ Visualization Manager:
           Channel Name: intensity
           Class: rviz/PointCloud2
           Color: 255; 255; 255
-          Color Transformer: FlatColor
+          Color Transformer: Intensity
           Decay Time: 0
           Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
-          Max Intensity: -999999
+          Max Intensity: 15.125518798828125
           Min Color: 0; 0; 0
-          Min Intensity: 999999
+          Min Intensity: 0.0005407924763858318
           Name: allMapCloud
           Position Transformer: XYZ
           Queue Size: 10
@@ -226,8 +226,8 @@ Visualization Manager:
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 10
-            Min Value: -10
+            Max Value: 73.03972625732422
+            Min Value: 30.634841918945312
             Value: true
           Axis: Z
           Channel Name: intensity
@@ -268,7 +268,7 @@ Visualization Manager:
           Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
-          Max Intensity: 15.114662170410156
+          Max Intensity: 15.124551773071289
           Min Color: 0; 0; 0
           Min Intensity: 0
           Name: currPoints
@@ -640,7 +640,7 @@ Visualization Manager:
           Use Fixed Frame: true
           Use rainbow: true
           Value: false
-      Enabled: true
+      Enabled: false
       Name: scan
     - Class: rviz/Image
       Enabled: false
@@ -662,23 +662,32 @@ Visualization Manager:
         aft_mapped:
           Value: false
         camera_init:
-          Value: true
-        imu_link:
-          Value: true
-        velodyne:
           Value: false
+        imu_link:
+          Value: false
+        imu_ref_frame:
+          Value: false
+        map:
+          Value: true
+        pls_ref_frame:
+          Value: false
+        velodyne:
+          Value: true
       Marker Scale: 20
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        camera_init:
-          aft_mapped:
-            imu_link:
-              {}
-            velodyne:
-              {}
+        pls_ref_frame:
+          imu_ref_frame:
+            map:
+              camera_init:
+                aft_mapped:
+                  imu_link:
+                    {}
+                  velodyne:
+                    {}
       Update Interval: 0
       Value: true
     - Angle Tolerance: 0.10000000149011612
@@ -707,8 +716,8 @@ Visualization Manager:
         Axes Length: 1
         Axes Radius: 0.10000000149011612
         Color: 114; 159; 207
-        Head Length: 0.5
-        Head Radius: 0.10000000149011612
+        Head Length: 2
+        Head Radius: 1
         Shaft Length: 5
         Shaft Radius: 0.20000000298023224
         Value: Arrow
@@ -719,7 +728,7 @@ Visualization Manager:
   Global Options:
     Background Color: 0; 0; 0
     Default Light: true
-    Fixed Frame: camera_init
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -743,25 +752,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 159.0803985595703
+      Distance: 162.98846435546875
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 4.954197883605957
-        Y: 8.241947174072266
-        Z: 1.5747865438461304
+        X: -6.92303991317749
+        Y: -1.6246782541275024
+        Z: -2.0778491497039795
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.2603970766067505
+      Pitch: 0.5097962617874146
       Target Frame: aft_mapped
       Value: Orbit (rviz)
-      Yaw: 0.5272148847579956
+      Yaw: 2.272213935852051
     Saved: ~
 Window Geometry:
   Displays:
