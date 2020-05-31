@@ -222,8 +222,8 @@ void laserOdometryHandler(const nav_msgs::Odometry::ConstPtr &laserOdometry)
 	q_w_curr_corrected = q_w_curr * q_rotation;
 
 	nav_msgs::Odometry odomAftMapped;
-	odomAftMapped.header.frame_id = "/camera_init";
-	odomAftMapped.child_frame_id = "/aft_mapped";
+	odomAftMapped.header.frame_id = "camera_init";
+	odomAftMapped.child_frame_id = "aft_mapped";
 	odomAftMapped.header.stamp = laserOdometry->header.stamp;
 	odomAftMapped.pose.pose.orientation.x = q_w_curr_corrected.x();
 	odomAftMapped.pose.pose.orientation.y = q_w_curr_corrected.y();
@@ -823,7 +823,7 @@ void process()
 				sensor_msgs::PointCloud2 laserCloudSurround3;
 				pcl::toROSMsg(*laserCloudSurround, laserCloudSurround3);
 				laserCloudSurround3.header.stamp = ros::Time().fromSec(timeLaserOdometry);
-				laserCloudSurround3.header.frame_id = "/camera_init";
+				laserCloudSurround3.header.frame_id = "camera_init";
 				pubLaserCloudSurround.publish(laserCloudSurround3);
 			}
 
@@ -838,7 +838,7 @@ void process()
 				sensor_msgs::PointCloud2 laserCloudMsg;
 				pcl::toROSMsg(laserCloudMap, laserCloudMsg);
 				laserCloudMsg.header.stamp = ros::Time().fromSec(timeLaserOdometry);
-				laserCloudMsg.header.frame_id = "/camera_init";
+				laserCloudMsg.header.frame_id = "camera_init";
 				pubLaserCloudMap.publish(laserCloudMsg);
 			}
 
@@ -851,7 +851,7 @@ void process()
 			sensor_msgs::PointCloud2 laserCloudFullRes3;
 			pcl::toROSMsg(*laserCloudFullRes, laserCloudFullRes3);
 			laserCloudFullRes3.header.stamp = ros::Time().fromSec(timeLaserOdometry);
-			laserCloudFullRes3.header.frame_id = "/camera_init";
+			laserCloudFullRes3.header.frame_id = "camera_init";
 			pubLaserCloudFullRes.publish(laserCloudFullRes3);
 
 			printf("mapping pub time %f ms \n", t_pub.toc());
@@ -862,7 +862,7 @@ void process()
 			q_w_curr_corrected = q_w_curr * q_rotation;
 			
 			/* tf::TransformListener listener;
-			listener.lookupTransform("/map", "/camera_init", ros::Time(0));
+			listener.lookupTransform("/map", "camera_init", ros::Time(0));
 			geometry_msgs::TransformStamped ts1;
 			ts1.header.frame_id = "map";
 			ts1.child_frame_id = "camera_init";
@@ -871,8 +871,8 @@ void process()
 			buffer_core.setTransform(ts1, "default_authority", is_static); */
 			
 			nav_msgs::Odometry odomAftMapped, odomAftMappedCorrected;
-			odomAftMapped.header.frame_id = "/camera_init";
-			odomAftMapped.child_frame_id = "/aft_mapped";
+			odomAftMapped.header.frame_id = "camera_init";
+			odomAftMapped.child_frame_id = "aft_mapped";
 			odomAftMapped.header.stamp = ros::Time().fromSec(timeLaserOdometry);
 			odomAftMapped.pose.pose.orientation.x = q_w_curr_corrected.x();
 			odomAftMapped.pose.pose.orientation.y = q_w_curr_corrected.y();
@@ -887,7 +887,7 @@ void process()
 			laserAfterMappedPose.header = odomAftMapped.header;
 			laserAfterMappedPose.pose = odomAftMapped.pose.pose;
 			laserAfterMappedPath.header.stamp = odomAftMapped.header.stamp;
-			laserAfterMappedPath.header.frame_id = "/camera_init";
+			laserAfterMappedPath.header.frame_id = "camera_init";
 			laserAfterMappedPath.poses.push_back(laserAfterMappedPose);
 			pubLaserAfterMappedPath.publish(laserAfterMappedPath);
 			pubPoseAftMapped.publish(laserAfterMappedPose);
@@ -904,14 +904,14 @@ void process()
 			q.setY(q_w_curr.y());
 			q.setZ(q_w_curr.z());
 			transform.setRotation(q);
-			br.sendTransform(tf::StampedTransform(transform, odomAftMapped.header.stamp, "/camera_init", "/aft_mapped"));
+			br.sendTransform(tf::StampedTransform(transform, odomAftMapped.header.stamp, "camera_init", "aft_mapped"));
 
 			/* tf2::BufferCore buffer_core;			
 			geometry_msgs::TransformStamped ts_lookup;
 			geometry_msgs::PoseStamped eval_pose;
 			pose.header.stamp = ros::Time::now();;  
 			pose.header.frame_id = "/map";
-			ts_lookup = buffer_core.lookupTransform("/map", "/camera_init", ros::Time(0));
+			ts_lookup = buffer_core.lookupTransform("/map", "camera_init", ros::Time(0));
 
 			odomAftMappedCorrected = odomAftMapped;
 			tf2::doTransform(laserAfterMappedPose.pose, eval_pose.pose, ts_lookup);

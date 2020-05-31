@@ -7,12 +7,14 @@
 
     <!-- remove too closed points -->
     <param name="minimum_range" type="double" value="0.3"/>
-  <node pkg="tf2_ros" type="static_transform_publisher" name="map_pub" args="0 0 0 3.141592 0 0 map camera_init"/>
-  <node pkg="tf2_ros" type="static_transform_publisher" name="imu_ref_frame_pub" args="0 0 0 -4.712388 4.712388 0 imu_ref_frame map"/>
-  <node pkg="tf2_ros" type="static_transform_publisher" name="pls_ref_frame_pub" args="0 0 0 0 0 3.141592 pls_ref_frame imu_ref_frame"/>
-  <node pkg="tf2_ros" type="static_transform_publisher" name="imu_base_pub" args="0.074 0.0133 -0.15 1.57079 0 -1.57079 aft_mapped imu_link"/>
-  <node pkg="tf2_ros" type="static_transform_publisher" name="lidar_base_pub" args="0 0 0 -1.57079 0 0 aft_mapped velodyne"/>
-  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="gps_base_pub" args="0.77 -0.0133 0.025 0 0 0 aft_mapped gps_link"/> -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="map_pub" args="0 0 0 3.141592 0 0 map camera_init"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="imu_ref_frame_pub" args="0 0 0 -4.712388 4.712388 0 imu_ref_frame map"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="pls_ref_frame_pub" args="0 0 0 0 0 3.141592 pls_ref_frame imu_ref_frame"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_pub" args="0 0 0 3.141592 0 0 aft_mapped base_link"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="imu_base_pub" args="0.074 0.0133 -0.15 4.712388 0 -1.57079 base_link imu_link"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="lidar_base_pub" args="0 0 0 1.57079 0 0 base_link velodyne"/>
+    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="imu_pub" args="0 0 0 0 0 0 map odom"/> -->
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="gps_base_pub" args="0.77 -0.0133 0.025 0 0 0 base_link gps_link"/> -->
 
     <param name="mapping_line_resolution" type="double" value="0.2"/>
     <param name="mapping_plane_resolution" type="double" value="0.4"/>

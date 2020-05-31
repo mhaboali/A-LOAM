@@ -1,0 +1,13 @@
+<launch>
+    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_to_gps_odometry" respawn="false" output="screen">
+        <rosparam command="load" file="$(find aloam_velodyne)/config/navsat_transform.yaml" />
+
+       <!-- It's better to try to use the filtered gps reading instead of the normal one -->
+       <remap from="gps/fix" to="/navsat/fix"/>
+       <remap from="imu/data" to="/imu/data"/>
+        <remap from="/odometry/filtered" to="/aft_mapped_to_init"/>
+        <!-- <remap from="/velocity" to="/ublox_gps/fix_velocity"/> -->
+
+    </node>
+
+</launch>
