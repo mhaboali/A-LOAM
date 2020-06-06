@@ -45,10 +45,12 @@ def gpsOdomCallBack(odom_msg):
     eval_odom.header.frame_id = target_frame
     y_orig = odom_msg.pose.pose.position.y
     x_orig = odom_msg.pose.pose.position.x
+    # orig_quat = odom_msg.pose.pose.orientation 
+    # trans_quat = (0,0,1,0)
     eval_odom.pose.pose.position.x = y_orig
-    eval_odom.pose.pose.position.y = x_orig
+    eval_odom.pose.pose.position.y = -1 * x_orig
     eval_odom.pose.pose.position.z = odom_msg.pose.pose.position.z
-    eval_odom.pose.pose.orientation = odom_msg.pose.pose.orientation    
+    eval_odom.pose.pose.orientation =  odom_msg.pose.pose.orientation 
     evalOdomPub.publish(eval_odom)
     print(eval_odom.pose.pose)
 

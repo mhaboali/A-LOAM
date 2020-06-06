@@ -861,15 +861,6 @@ void process()
 			Eigen::Quaterniond q_w_curr_corrected(1,0,0,0), q_rotation(0, 0, 0, 1);
 			q_w_curr_corrected = q_w_curr * q_rotation;
 			
-			/* tf::TransformListener listener;
-			listener.lookupTransform("/map", "camera_init", ros::Time(0));
-			geometry_msgs::TransformStamped ts1;
-			ts1.header.frame_id = "map";
-			ts1.child_frame_id = "camera_init";
-			ts1.transform.rotation = tf::createQuaternionMsgFromRollPitchYaw(0, 0, 3.14);
-			const bool is_static = true;
-			buffer_core.setTransform(ts1, "default_authority", is_static); */
-			
 			nav_msgs::Odometry odomAftMapped, odomAftMappedCorrected;
 			odomAftMapped.header.frame_id = "camera_init";
 			odomAftMapped.child_frame_id = "aft_mapped";
@@ -905,20 +896,7 @@ void process()
 			q.setZ(q_w_curr.z());
 			transform.setRotation(q);
 			br.sendTransform(tf::StampedTransform(transform, odomAftMapped.header.stamp, "camera_init", "aft_mapped"));
-
-			/* tf2::BufferCore buffer_core;			
-			geometry_msgs::TransformStamped ts_lookup;
-			geometry_msgs::PoseStamped eval_pose;
-			pose.header.stamp = ros::Time::now();;  
-			pose.header.frame_id = "/map";
-			ts_lookup = buffer_core.lookupTransform("/map", "camera_init", ros::Time(0));
-
-			odomAftMappedCorrected = odomAftMapped;
-			tf2::doTransform(laserAfterMappedPose.pose, eval_pose.pose, ts_lookup);
-			odomAftMappedCorrected.pose.pose = eval_pose.pose;
-			pubPoseAftMapped.publish(odomAftMappedCorrected); */			
-
-
+			
 			frameCount++;
 		}
 		std::chrono::milliseconds dura(2);

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+  <rosparam command="load" file="$(find aloam_velodyne)/config/ekf_params.yaml" />
+  
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_odom" clear_params="true"/>
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_map" clear_params="true">
+    <remap from="odometry/filtered" to="odometry/filtered_map"/>
+  </node>
+
+  <include file="$(find aloam_velodyne)/launch/navsat_odom.launch"/>
+
+
+</launch>

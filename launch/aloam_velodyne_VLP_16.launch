@@ -13,6 +13,11 @@
     <node pkg="tf2_ros" type="static_transform_publisher" name="base_pub" args="0 0 0 3.141592 0 0 aft_mapped base_link"/>
     <node pkg="tf2_ros" type="static_transform_publisher" name="imu_base_pub" args="0.074 0.0133 -0.15 4.712388 0 -1.57079 base_link imu_link"/>
     <node pkg="tf2_ros" type="static_transform_publisher" name="lidar_base_pub" args="0 0 0 1.57079 0 0 base_link velodyne"/>
+
+    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="imu_ros_pub" args="0.074 0.0133 -0.15 0 0 0 aft_mapped imu_ros_link"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="velo_ros_pub" args="0 0 0 0 0 0 aft_mapped velo_ros_link"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="imu_base_pub" args="0 0 0 1.57079 0 -1.57079 imu_ros_link imu_link"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="lidar_base_pub" args="0 0 0 -1.57079 0 0 velo_ros_link velodyne"/> -->
     <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="imu_pub" args="0 0 0 0 0 0 map odom"/> -->
   <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="gps_base_pub" args="0.77 -0.0133 0.025 0 0 0 base_link gps_link"/> -->
 
@@ -24,6 +29,10 @@
     <node pkg="aloam_velodyne" type="alaserOdometry" name="alaserOdometry" output="screen" />
 
     <node pkg="aloam_velodyne" type="alaserMapping" name="alaserMapping" output="screen" />
+    
+    <!-- <include file="$(find aloam_velodyne)/launch/localization.launch"/> -->
+    
+    <!-- <include file="$(find aloam_velodyne)/launch/ekf_pose.launch"/> -->
 
     <arg name="rviz" default="true" />
     <group if="$(arg rviz)">
